@@ -1,0 +1,776 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #000;
+    overflow-x: hidden;
+}
+ 
+
+.red_underline {
+    width: 70px;
+    height: 3px;
+    background-color: #ff0000;
+    margin: 10px auto 20px;
+}
+
+.red_underline_2 {
+    width: 40px;
+    height: 3px;
+    background-color: #ff0000;
+    margin: 10px auto 20px;
+    
+}
+
+
+.navbar {
+    height: 90px;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:0 8%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #222;
+    
+}
+
+.nav_logo{
+    height:80px;
+    width:80px;
+    margin-left: 40px;
+    
+}
+ 
+.logo{
+    height:auto;
+    width:auto;  
+    max-width: 100%;
+    display: block;
+}
+
+.nav_links{
+ display: flex;
+ align-items:center;
+}
+
+
+nav a {
+    color: #ffffff;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: 600;
+
+    
+}
+
+nav a:hover {
+    color:  #ff3c00;
+
+}
+
+
+/* --- HERO SECTION STYLES --- */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px); /* Starts 30px lower */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Ends at its original position */
+    }
+}
+
+@keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes revealText {
+    0% {
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        transform: translateY(20px);
+    }
+    100% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        transform: translateY(0);
+    }
+}
+
+/* Main Container: Sets the background and enables Flexbox for two columns */
+.hero_section {
+   /* Image Settings */
+    background-image:url(./background_image.jpg) ; /* CHANGE: Your image file path */
+    background-size: cover; /* Ensures the image covers the entire section */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat;
+    
+    height: 100vh; /* Takes up 90% of the viewport height */
+    padding-top: 80px;
+    
+    
+    display: flex; /* Enables two-column layout */
+    align-items: center; /* Vertically centers the content */
+    justify-content: space-around; /* Distributes space between the two columns */
+    padding: 0 40px;
+    background-color:#0d1217;
+}
+
+/* Left Column (Text Content) */
+.hero_content_left {
+    max-width: 500px; /* Limits the width of the text column */
+    color: rgb(255, 255, 255);
+    animation: fadeUp 1s ease-out forwards;
+}
+
+/* Heading */
+.hero_content_left h1 {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: white;
+
+    /* THE TRICK: Clip-path hides the text initially */
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    transform: translateY(20px);
+    /* Starts slightly lower */
+
+    /* Animation settings */
+    animation: revealText 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+/* Paragraph Text */
+.hero_content_left p {
+    font-size: 1.1rem;
+    color: #cccccc;; /* Lighter color for sub-text */
+    margin-bottom: 30px;
+    opacity: 0; /* Hidden initially */
+    animation: fadeUp 0.8s ease-out 0.4s forwards; /* 0.4s delay */
+    
+}
+
+/* Right Column (Image Mockup) */
+.hero_content_right {
+    /* Adjust as needed to position the image */
+}
+
+/* Mockup Image Styling */
+.mockup_image {
+    max-height: 550px; /* Adjust height of the phone image */
+    width: auto;
+    transform: rotate(-6deg);
+    animation: floating 3s ease-in-out infinite; /* Moves up and down forever */
+    /* This image is likely positioned slightly off-screen or rotated on the original site. 
+       If you need rotation: transform: rotate(5deg); */
+}
+
+
+/* --- BUTTON STYLES --- */
+.hero_buttons {
+    display: flex;
+    gap: 15px; /* Space between the two buttons */
+    opacity: 0;
+    animation: fadeUp 0.8s ease-out 0.8s forwards; /* 0.8s delay */
+ 
+}
+
+.btn {
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    font-size: 1rem;
+}
+
+.primary_btn {
+    background-color: #ff3c00; /* Orange/Red color from the original site */
+    color: white;
+    border: 2px solid #ff3c00;
+    border-radius:20px;
+}
+
+.primary_btn:hover {
+    background-color: #d23c00;
+}
+
+.secondary_btn {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius:20px;
+}
+
+.secondary_btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+
+
+
+
+
+
+.stats_bar {
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0;
+    gap: 40px;
+}
+
+.stat_group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.stat_group i {
+    color: #ff3c00; /* The specific red from original */
+    font-size: 24px;
+}
+
+.stat_text {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.value {
+    color: #888;
+    font-size: 12px;
+}
+
+.divider {
+    width: 1px;
+    height: 40px;
+    background-color: #333;
+} 
+ 
+
+
+
+
+
+/* --- SLIDER CONTAINER --- */
+
+
+.exclusive_rewards {
+  background-color: #1a1a1a;
+  padding: 60px 8%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  
+  /* 1. Add vertical spacing between all elements */
+  gap: 40px; 
+}
+
+/* 2. Ensure the link button behaves like a box */
+.exclusive_rewards a {
+  display: inline-block;
+  margin-top: 30px; 
+}
+
+.text{
+    color:red;
+    
+}
+
+.para{
+    color: white;
+}
+.reward_btn {
+    text-decoration: none;
+    background-color: rgb(207, 36, 13);
+    color: #fffefe;
+    padding: 10px 20px ;
+    border-radius: 15px;
+}
+
+.rewards_card {
+    width: 100%;
+    max-width: 1100px;
+    height: 350px;
+    position: relative; /* Context for absolute slides */
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid #333;
+}
+
+/* --- INDIVIDUAL SLIDE LOGIC --- */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Hidden by default */
+    animation: autoSlider 12s linear infinite; /* 12s total loop */
+}
+
+/* Assign delays so they follow each other */
+.slide1 { 
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('./game_1.jpg') center/cover;
+    animation-delay: 0s; 
+}
+.slide2 { 
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('./games_2.jpg') center/cover;
+    animation-delay: 4s; 
+}
+.slide3 { 
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('./game.jpg') center/cover;
+    animation-delay: 8s; 
+}
+
+/* CORRECTED KEYFRAMES */
+@keyframes autoSlider {
+    0% { opacity: 0; }
+    5% { opacity: 1; }      /* Fade in quickly */
+    28% { opacity: 1; }     /* Stay visible */
+    33.3% { opacity: 0; }   /* Fade out before next slide starts */
+    100% { opacity: 0; }    /* Remain hidden for the rest of the loop */
+}
+
+/* --- DOTS ANIMATION (Matches the slides) --- */
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: #555;
+    border-radius: 50%;
+    animation: dotScale 12s linear infinite;
+}
+
+.dot1 { animation-delay: 0s; }
+.dot2 { animation-delay: 4s; }
+.dot3 { animation-delay: 8s; }
+
+@keyframes dotScale {
+    0%, 5% { width: 10px; background-color: #555; }
+    10%, 28% { width: 25px; background-color: #ff3c00; border-radius: 10px; }
+    33.3%, 100% { width: 10px; background-color: #555; border-radius: 50%; }
+}
+
+
+
+
+/* Slider Pagination Dots */
+.slider_dots {
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: #555;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: #ff3c00;
+    width: 25px; /* Makes the active dot an oval */
+    border-radius: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.games_section {
+    background-color: #111111; /* Dark background matching the theme */
+    padding: 60px 8%;
+    color: white;
+    text-align: center;
+}
+
+.section_header {
+    margin-bottom: 40px;
+}
+
+.section_header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.section_header p {
+    color: #888;
+}
+
+/* THE GRID SYSTEM */
+.games_grid {
+    display: grid;
+    /* This creates 3 equal columns that adjust automatically */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* GAME CARD STYLES */
+.game_card {
+    background-color: #1a1a1a;
+    border-radius: 15px;
+    overflow: hidden; /* Clips the image to the border radius */
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    border: 1px solid #333;
+}
+
+.game_card:hover {
+    transform: translateY(-10px); /* Slight lift on hover */
+    border-color: #ff4500; /* Glow effect on hover */
+}
+
+.game_card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.game_info {
+    padding: 20px;
+}
+
+.game_info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.game_info span {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+
+
+
+
+
+
+
+.features_section {
+    background-color:#333333;
+    padding: 80px 8%;
+    color: white;
+    text-align: center;
+}
+
+.features_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.feature_box {
+    background-color: #0d1217; /* Slightly lighter blue-black for the boxes */
+    padding: 40px 30px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    border: 1px solid #222;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.feature_box:hover {
+    transform: translateY(-10px);
+    border-color: #ff4500;
+    box-shadow: 0 10px 30px rgba(255, 69, 0, 0.1);
+}
+
+.icon_circle {
+    width: 70px;
+    height: 70px;
+    background: rgba(255, 69, 0, 0.1); /* Subtle red glow background */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.icon_circle i {
+    color: #ff4500; /* Main brand red */
+    font-size: 30px;
+}
+
+.feature_box h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.feature_box p {
+    color: #888;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+
+
+.app_download_section {
+    padding: 100px 8%;
+    text-align: center;
+    background: radial-gradient(circle at center, #3a0000 0%, #000000 70%);
+    color: white;
+}
+
+.app_content h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.app_content p {
+    max-width: 600px;
+    margin: 0 auto 40px;
+    color: #ccc;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.store_buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.store_btn img {
+    height: 60px;
+    transition: transform 0.3s ease;
+}
+
+.store_btn:hover img {
+    transform: scale(1.05);
+}
+
+
+
+
+    
+.backed_by_section {
+    padding: 80px 8%;
+    background-color: #111111;
+    text-align: center;
+    color: white;
+}
+
+
+
+.investor_logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    margin-top: 50px;
+    flex-wrap: wrap;
+    opacity: 0.7; /* Subtler look like the original site */
+}
+
+.investor {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    filter: grayscale(100%) brightness(200%); /* Makes colored logos look white/professional */
+    transition: filter 0.3s ease;
+}
+
+.investor:hover {
+    filter: none; /* Colors return on hover */
+}
+
+.investor img {
+  height: 100px;
+  filter: brightness(0) invert(1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.faq_section {
+    background-color:#333333;
+    padding: 80px 8%;
+    color: white;
+    text-align: center;
+}
+
+.faq_container {
+    max-width: 800px;
+    margin: 50px auto 0;
+}
+
+.faq_item {
+    background-color: #1a1a1a;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    overflow: hidden;
+}
+
+.faq_question {
+    padding: 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+
+
+.faq_question:hover {
+    background-color: #222;
+}
+
+.faq_question span {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.faq_question i {
+    color: #ff4500;
+    transition: transform 0.3s ease;
+}
+
+.faq_answer {
+    padding: 0 25px;
+    max-height: 0; /* Hidden by default */
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    background-color: #111;
+}
+
+.faq_answer p {
+    padding-bottom: 20px;
+    color: #888;
+    line-height: 1.6;
+}
+
+/* Logic for "Active" FAQ (You can trigger this with JS or :hover for simple demo) */
+.faq_item:hover .faq_answer {
+    max-height: 200px; /* Expands on hover */
+    padding-top: 20px;
+}
+
+.faq_item:hover .faq_question i {
+    transform: rotate(180deg);
+}
+
+
+
+
+
+
+
+.main_footer {
+    background-color: #000;
+    padding: 60px 8% 20px;
+    color: white;
+    border-top: 1px solid #222;
+}
+
+.footer_content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer_brand {
+    max-width: 300px;
+    margin: 20px 0;
+}
+
+.footer_logo {
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+.footer_brand p {
+    color: #888;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.footer_links, .footer_support {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer_links h4, .footer_support h4 {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.footer_links a, .footer_support a {
+    color: #888;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.footer_links a:hover, .footer_support a:hover {
+    color: #ff4500;
+}
+
+.footer_bottom {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid #111;
+    color: #aaaaaa;
+    font-size:14px;
+}
